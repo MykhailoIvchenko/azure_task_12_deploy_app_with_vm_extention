@@ -12,6 +12,7 @@ $vmName = "matebox"
 $vmImage = "Ubuntu2204"
 $vmSize = "Standard_B1s"
 $dnsLabel = "matetask" + (Get-Random -Count 1)
+$accountName = "MykhailoIvchenko"
 
 Write-Host "Creating a resource group $resourceGroupName ..."
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -48,7 +49,7 @@ $ExtensionParams = @{
     ExtensionType      = 'CustomScript'
     TypeHandlerVersion = '2.1'
     Settings           = @{
-        fileUris         = @('https://raw.githubusercontent.com/MykhailoIvchenko/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh')
+        fileUris         = @("https://raw.githubusercontent.com/$accountName/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh")
         commandToExecute = 'bash install-app.sh'
     }
 }
